@@ -26,12 +26,14 @@ public class Main extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
         ControlPanel controlPanel = new ControlPanel();
         Game game = new Game(5,5);
+
         tabbedPane.add("Grid", gridPanel);
         tabbedPane.add("About", aboutPanel);
         this.add(tabbedPane, BorderLayout.CENTER);
         this.add(controlPanel, BorderLayout.SOUTH);
         this.setVisible(true);
         game.addObserver(gridPanel);
+        game.flip(1,3);
         Controller controller = new Controller(gridPanel,game);
         controlPanel.addActionListener(controller);
         gridPanel.addMouseListener(controller.getMouseListener());

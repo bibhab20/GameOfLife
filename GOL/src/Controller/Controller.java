@@ -61,6 +61,17 @@ public class Controller implements ActionListener {
             System.out.println("inside controller next button action");
             this.game.simulateNextGeneration();
         }
+        if(e.getActionCommand().equals("Start")){
+            try {
+                this.game.start();
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
+        }
+
+        if (e.getActionCommand().equals("Stop")){
+            this.game.stop();
+        }
     }
 
     public MouseListener getMouseListener(){

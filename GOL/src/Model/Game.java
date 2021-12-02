@@ -3,10 +3,12 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 
 public class Game extends Observable {
     private List<List<Boolean>> grid;
     private GameState state;
+    Thread runningThread;
     private static final int LIMIT = 100;
 
     public Game(int noOfRows, int noOfCols){
@@ -20,6 +22,7 @@ public class Game extends Observable {
             this.grid.add(row);
         }
 
+
     }
 
     public void flip(int row, int col){
@@ -31,17 +34,33 @@ public class Game extends Observable {
     }
 
     public void start() throws InterruptedException {
-        this.state = GameState.RUNNING;
-        int count =0;
-        while(this.state== GameState.RUNNING && count<LIMIT){
-            simulateNextGeneration();
-            count++;
-            wait(100);
-        }
+        System.out.println("inside start");
+        runningThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                state = GameState.RUNNING;
+                int count =0;
+                while(state == GameState.RUNNING && count<LIMIT){
+                    System.out.println("inside while loop");
+                    simulateNextGeneration();
+                    count++;
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        runningThread.start();
+
+
+
     }
 
     public void stop(){
         this.state = GameState.IDLE;
+        runningThread.stop();
     }
 
     public void simulateNextGeneration(){
