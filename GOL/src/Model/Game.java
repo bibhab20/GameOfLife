@@ -34,14 +34,12 @@ public class Game extends Observable {
     }
 
     public void start() throws InterruptedException {
-        System.out.println("inside start");
         runningThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 state = GameState.RUNNING;
                 int count =0;
                 while(state == GameState.RUNNING && count<LIMIT){
-                    System.out.println("inside while loop");
                     simulateNextGeneration();
                     count++;
                     try {
@@ -69,7 +67,6 @@ public class Game extends Observable {
         generation++;
         int rows = this.grid.size();
         int cols = this.grid.get(0).size();
-        System.out.println("inside game simulateGeneration method");
         List<List<Boolean>> newGrid = new ArrayList<>();
         for(int i=0; i<rows; i++){
             List<Boolean> row = new ArrayList<>();
@@ -77,7 +74,6 @@ public class Game extends Observable {
                 int aliveNeighbors = countLiveNeighbors(i,j);
                 boolean state = this.grid.get(i).get(j);
                 if(!state && aliveNeighbors>2) {
-                    System.out.println("no of alive neighbors " + aliveNeighbors + " is set alive at " + i + ", " + j);
                     state = Boolean.TRUE;
                 }
                 else{

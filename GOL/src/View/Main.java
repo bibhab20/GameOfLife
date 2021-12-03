@@ -25,7 +25,7 @@ public class Main extends JFrame {
         AboutPanel aboutPanel = new AboutPanel();
         JTabbedPane tabbedPane = new JTabbedPane();
         ControlPanel controlPanel = new ControlPanel();
-        Game game = new Game(25,50);
+        Game game = new Game(30,90);
 
         tabbedPane.add("Grid", gridPanel);
         tabbedPane.add("About", aboutPanel);

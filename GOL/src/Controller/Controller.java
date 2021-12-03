@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Game;
+import View.GridPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Controller implements ActionListener {
-    JPanel panel;
+    GridPanel panel;
     Game game;
     MouseListener mouseListener = new MouseListener() {
         @Override
@@ -25,8 +26,8 @@ public class Controller implements ActionListener {
 
             int row = y*rows/panelWidth;
             int col = x*cols/panelHeight;
-
-            game.flip(row,col);
+            int[] location = panel.getRowCol(x,y);
+            game.flip(location[0],location[1]);
         }
 
         @Override
@@ -50,7 +51,7 @@ public class Controller implements ActionListener {
         }
     };
 
-    public Controller(JPanel mousePanel, Game game){
+    public Controller(GridPanel mousePanel, Game game){
         this.panel = mousePanel;
         this.game = game;
     }
@@ -75,6 +76,12 @@ public class Controller implements ActionListener {
 
         if(e.getActionCommand().equals("Reset")){
             this.game.reset();
+        }
+        if(e.getActionCommand().equals("Zoom In")){
+            this.panel.zoomIn();
+        }
+        if(e.getActionCommand().equals("Zoom Out")){
+            this.panel.zoomOut();
         }
     }
 
