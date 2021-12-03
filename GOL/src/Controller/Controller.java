@@ -23,8 +23,8 @@ public class Controller implements ActionListener {
             int rows = game.getGrid().size();
             int cols = game.getGrid().get(0).size();
 
-            int row = x*rows/panelWidth;
-            int col = y*cols/panelWidth;
+            int row = y*rows/panelWidth;
+            int col = x*cols/panelHeight;
 
             game.flip(row,col);
         }
@@ -71,6 +71,10 @@ public class Controller implements ActionListener {
 
         if (e.getActionCommand().equals("Stop")){
             this.game.stop();
+        }
+
+        if(e.getActionCommand().equals("Reset")){
+            this.game.reset();
         }
     }
 
