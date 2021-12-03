@@ -18,7 +18,7 @@ public class GridPanel extends JPanel implements Observer {
         this.setBackground(Color.gray);
         grid = new ArrayList<>();
         this.noOfRowsDisplayed =2;
-        this.zoomFactor =100;
+        this.zoomFactor =140;
     }
 
 
@@ -128,8 +128,8 @@ public class GridPanel extends JPanel implements Observer {
         int side = this.getSquareSize();
         ans[0] = rowStart + y/side;
         ans[1] = colStart + x/side;
-        ans[0] = Math.min(ans[0],noOfRows);
-        ans[1] = Math.min(ans[1],noOfCols);
+        ans[0] = Math.min(ans[0],noOfRows-1);
+        ans[1] = Math.min(ans[1],noOfCols-1);
         return ans;
     }
 }

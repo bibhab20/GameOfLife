@@ -91,9 +91,7 @@ public class Game extends Observable {
 
     }
 
-    public void scaleUp(){
 
-    }
 
     private int countLiveNeighbors(int row, int col){
         int[][] directions = new int[][]{{1,-1},{1,0},{1,1},{-1,-1},{-1,0},{-1,1},{0,-1},{0,1}};
@@ -120,6 +118,8 @@ public class Game extends Observable {
     }
 
     public void reset(){
+        if(this.state == GameState.RUNNING)
+            return;
         this.generation =0;
         this.grid = new ArrayList<>();
         for(int i=0; i<this.size[0]; i++){

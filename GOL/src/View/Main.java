@@ -20,6 +20,7 @@ public class Main extends JFrame {
     public void createGUI(){
         this.setSize(new Dimension(1200,800));
         this.setLayout(new BorderLayout());
+        this.setTitle("Game of LIFE");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridPanel gridPanel = new GridPanel();
         AboutPanel aboutPanel = new AboutPanel();
