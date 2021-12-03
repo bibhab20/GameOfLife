@@ -59,7 +59,6 @@ public class Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Next")){
-            System.out.println("inside controller next button action");
             this.game.simulateNextGeneration();
         }
         if(e.getActionCommand().equals("Start")){

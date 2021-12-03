@@ -69,7 +69,6 @@ public class GridPanel extends JPanel implements Observer {
         }*/
         Map<Point, Boolean> rectangles = getRectangles();
         int side = this.getSquareSize();
-        System.out.println("side: "+side);
        for(Point point : rectangles.keySet()){
             if(rectangles.get(point)){
                 g.setColor(Color.yellow);
@@ -92,8 +91,6 @@ public class GridPanel extends JPanel implements Observer {
         int rowIndex = (noOfRows -nr)/2;
         int colStart = (noOfCols-nc)/2;
         int colIndex = colStart;
-        System.out.println("zoom factor "+zoomFactor);
-        System.out.println("nr "+nr+" nc "+nc);
         int side = this.getSquareSize();
         Map<Point, Boolean> map = new HashMap<>();
         for(int i=0; i<nr; i++){

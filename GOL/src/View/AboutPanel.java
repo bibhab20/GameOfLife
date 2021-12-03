@@ -17,15 +17,11 @@ public class AboutPanel extends JPanel {
         this.setPreferredSize(new Dimension(800,600));
         this.setBackground(Color.darkGray);
 
-   /*     ImageIcon img = new ImageIcon("rules.png");
-        background = new JLabel("",img,JLabel.CENTER);
-        background.setBounds(0, 0, 800, 600);
-        this.add(background);
-*/
+
 
         BufferedImage myPicture = null;
         try {
-            myPicture = ImageIO.read(new File("GOL/src/View/rules.png"));
+            myPicture = ImageIO.read(new File("GOL"+File.separator+"src"+File.separator+"rules.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
